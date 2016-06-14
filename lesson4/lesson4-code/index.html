@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+  ~ Copyright (c) 2016. Created by Iakov Kosyakov. www.iakovk.ru
+  -->
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css">
+    <script src="js/functions.js" defer></script>
+</head>
+<body>
+<section>
+    <h4>Exercise 1</h4>
+    <p>Напишите функцию min, принимающую два аргумента, и возвращающую минимальный из них.</p>
+    <input type="number" id="a" value="7">
+    <input type="number" id="b" value="8">
+    <input type="button" onclick="showMin(); showFunc(1);" value="Show 1st">
+    <h4>Exercise 2.1</h4>
+    <p>
+        Напишите функцию countBs, которая принимает строку в качестве аргумента, и возвращает количество символов “B”, содержащихся в строке. В этом примере должно получиться 2 в слове BBC
+    </p>
+    <input type="text" id="textFor2.1" value="Gambler is watching BBC">
+    <input type="button" onclick="showBs(); showFunc(2);" value="Show 2.1">
+    <p>
+    <h4>Exercise 2.2</h4>
+    <p>
+        Затем напишите функцию countChar, которая работает примерно как countBs, только принимает второй параметр — символ, который мы будем искать в строке (вместо того, чтобы просто считать количество символов “B”). Для этого переделайте функцию countBs.
+    </p>
+    <input type="text" id="textFor2.2" value="some text">
+    <input type="text" id="charFor2.2" value="t">
+    <input type="button" onclick="showCountChar(); showFunc(3);" value="Show 2.2">
+    <p>
+    <h4>Exercise 3</h4>
+    <p>Ноль чётный. Единица нечётная. У любого числа N чётность такая же, как у N-2.Напишите рекурсивную функцию isEven согласно этим правилам. Она должна принимать число и возвращать булевское значение. Потестируйте её на 50 и 75. Попробуйте задать ей -1. Почему она ведёт себя таким образом? Можно ли её как-то исправить?</p>
+    <input type="number" id="x" value="8">
+    <input type="button" onclick=" showIsEven(); showFunc(4);" value="Show 3rd">
+</section>
+<aside>
+    <span>Результат:</span>
+    <hr>
+    <div id="console"></div>
+</aside>
+<section id="code">
+    <span>Код:</span>
+    <hr>
+    <code id="code_inner">
+        <code id="1" hidden>
+            function showMin() {<br>
+            var a = document.getElementById("a").value;<br>
+            var b = document.getElementById("b").value;<br>
+            if (a == b){<br>
+            document.getElementById("console").innerHTML = a + " = " + b;<br>
+            } else {<br>
+            if (a < b){<br>
+            document.getElementById("console").innerHTML = a;<br>
+            } else {<br>
+            document.getElementById("console").innerHTML = b;<br>
+            }<br>
+            }<br>
+            }
+        </code>
+        <code id="2" hidden>
+            function countBs(str) {<br>
+            var length = str.length;<br>
+            var res = 0;<br>
+            while (length > 0){<br>
+            if (str.charAt(length - 1) === "B"){<br>
+            res++;<br>
+            }<br>
+            length--;<br>
+            }<br>
+            return res;<br>
+            }<br>
+        </code>
+        <code id="3" hidden>
+            function findChar(str, char) {<br>
+            var res = '', k = 0, pos = '';<br>
+            if ((char.length > 1) || (char.length > 1)){<br>
+            res = 'Только 1 символ';<br>
+            } else {<br>
+            while (length > 0){<br>
+            if (str.charAt(length - 1) === char){<br>
+            res += " : " + length;<br>
+            k++;<br>
+            }<br>
+            length--;<br>
+            }<br>
+            }<br>
+            if (k > 1) pos = "позициях"; else pos = "позиции";<br>
+            return "символ: " + char + " встретился " + k + " раз, на " + pos + res;<br>
+            }<br>
+        </code>
+        <code id="4" hidden>
+            function isEven(value){<br>
+            if (value < 0){<br>
+            value *= -1; // Плохо работает с отрицательными - превратим в положительное!<br>
+            }<br>
+            if (value == 0) {<br>
+            return true + ', четное';<br>
+            }<br>
+            if (value == 1) {<br>
+            return false  + ', нечетное';<br>
+            }<br>
+            return isEven(value - 2); // N - 2, рано или поздно придем к 0 или 1<br>
+            }<br>
+        </code>
+    </code>
+</section>
+</body>
+</html>

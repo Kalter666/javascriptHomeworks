@@ -1,0 +1,42 @@
+body {
+  background-color: antiquewhite;
+  display: flex; }
+
+aside {
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  bottom: 0;
+  min-width: 30%;
+  max-width: 30%;
+  right: 0px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column; }
+  aside span {
+    color: #e60000; }
+
+#console {
+  padding: 20px;
+  color: #006000; }
+
+.fizzbuzz {
+  color: red; }
+
+input:hover {
+  color: blue; }
+
+section {
+  padding: 10px;
+  min-width: 30%;
+  max-width: 30%; }
+
+#code {
+  position: fixed;
+  min-width: 30%;
+  max-width: 30%;
+  bottom: 0;
+  top: 0;
+  overflow: scroll; }
+
+/*# sourceMappingURL=style.css.map */

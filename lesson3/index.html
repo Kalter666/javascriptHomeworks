@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 3</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/4.1.1/normalize.css">
+    <script src="js/functions.js" defer></script>
+</head>
+<body>
+<section>
+    <h4>Exercise 1</h4>
+    <input type="button" onclick="FizzBuzz(); showFunc(1);" value="Show 1st">
+    <h4>Exercise 2</h4>
+    <input type="button" onclick="triangle(); showFunc(2);" value="Show triangle">
+    <p>
+    <h4>Exercise 3</h4>
+    <div>Введите значения (больше 0):</div>
+    <input type="number" id="x" value="8">
+    <input type="number" id="y" value="8">
+    <input type="button" onclick="chessBoard(); showFunc(3);" value="ChessBoard">
+</section>
+<aside>
+    <span>Результат:</span>
+    <hr>
+    <div id="console"></div>
+</aside>
+<section id="code">
+    <span>Код:</span>
+    <hr>
+    <code id="code_inner">
+        <code id="1" hidden>
+            function FizzBuzz() {<br>
+            var k, str = '';<br>
+            for(var i = 1; i < 101; i++){<br>
+            if ((i % 3 == 0) && (i % 5 == 0)) {<br>
+            k = '&ltspan class="fizzbuzz">FizzBuzz&lt/span>';<br>
+            } else {<br>
+            k = i;<br>
+            }<br>
+            str = str + k + '&ltbr>';<br>
+            }<br>
+            document.getElementById("console").innerHTML= str;<br>
+            }
+        </code>
+        <code id="2" hidden>
+            function getSharps(i) { //Функция возвращает #  в вол-ве i <br>
+            var str = ''; // string accumulator<br>
+            while(i > 0){<br>
+            str = str + '#';<br>
+            }<br>
+            return str;<br>
+            }<br><br>
+            function triangle() {<br>
+            var str = '';<br>
+            for (var i = 1; i < 8; i++){<br>
+            str = str + getSharps(i) + '\n';<br>
+            }<br>
+            document.getElementById("console").innerHTML = '&ltpre>' + str + '&lt/pre>';<br>
+            }<br>
+        </code>
+        <code id="3" hidden>
+            function oneByOne(i) { // Через 1 первый всегда пробел<br>
+            var str = '';<br>
+            var PJSharp = false;<br>
+            while (i > 0){<br>
+            switch (PJSharp){<br>
+            case false: str = str + ' '; PJSharp = true; break;<br>
+            case true: str = str + '#'; PJSharp = false;<br>
+            }<br>
+            i--;<br>
+            }<br>
+            return str;<br>
+            }<br><br>
+            function oneBySecond(i) { // Через 1 первый всегда # <br>
+            var str = '';<br>
+            var PJSharp = true;<br>
+            while (i > 0){<br>
+            switch (PJSharp){<br>
+            case false: str = str + ' '; PJSharp = true; break;<br>
+            case true: str = str + '#'; PJSharp = false;<br>
+            }<br>
+            i--;<br>
+            }<br>
+            return str;<br>
+            }<br>
+            <br>
+            function chessBoard() {<br>
+            var boar = true;<br>
+            var str = '';<br>
+            var i = document.getElementById("x").value;<br>
+            var j = document.getElementById("y").value;<br>
+            for (; i > 0; i--){<br>
+            switch (boar){<br>
+            case false: str = str + oneBySecond(j) + '\n'; boar = true; break;<br>
+            case true: str = str + oneByOne(j) + '\n'; boar = false;<br>
+            }<br>
+            }<br>
+            document.getElementById("console").innerHTML = '&ltpre>' + str + '&lt/pre>';<br>
+            }
+        </code>
+    </code>
+</section>
+</body>
+</html>
