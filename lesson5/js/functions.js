@@ -15,20 +15,33 @@ function showFunc(i) {
     document.getElementById(i).style.display = "block";
 }
 
-function getSixteen(a) {
-    var i = 0, b = [], c = [];
-    while (a > 0){
-       b[i] = a % 16;
+function toSixteen(a) {
+    var i = 0, b = [], c, str = '';
+    while ((a / 16 == 1) && (i<100)){
+       b[i] = a % 16;//Остаток от / 16
        switch (b[i]){
            case 10: b[i] = 'A'; break;
            case 11: b[i] = 'B'; break;
            case 12: b[i] = 'C'; break;
            case 13: b[i] = 'D'; break;
            case 14: b[i] = 'E'; break;
-           case 15: b[i] = 'F';
+           case 15: b[i] = 'F'; break;
+           default: b = b.toString();
        }
-       c[i] = Math.ceil(a / 16);
+        c = c = a / 16;
+       c = c.toFixed(0);//убираем остаток
+       a = a - 16 * c;//вычитаем
+       i++;
     }
+    if (i==99){
+        str = 'зациклилось!!'
+    } else {
+        while (i >= 0){
+            str += b[i] + ' ';//записываем в обратном порядке, чтобы получить необходимый результат
+            i--;
+        }
+    }
+    return str;
 }
 
 function getColor() {
@@ -37,7 +50,7 @@ function getColor() {
     for(var k = 1; k<4; k++){
         param[k] = document.getElementById('color'+ k).value;
         if ((param[k] >= 0) && (param[k] <= 255)){
-            str += parseInt(param[k],16) + ' ';
+            str += toSixteen(param[k]) + ' ';
         } else {
             str += NaN + ' ';
         }
