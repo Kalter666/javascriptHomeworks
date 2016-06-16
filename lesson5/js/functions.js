@@ -17,7 +17,7 @@ function showFunc(i) {
 
 function toSixteen(a) {
     var i = 0, b = [], c, str = '';
-    while ((a / 16 == 1) && (i<100)){
+    while ((a > 0) && (i<100)){
        b[i] = a % 16;//Остаток от / 16
        switch (b[i]){
            case 10: b[i] = 'A'; break;
