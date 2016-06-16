@@ -41,7 +41,7 @@ function toSixteen(a) {
             i--;
         }
     }
-    return str;
+    return str + '<br><br><br>';
 }
 
 function getColor() {
