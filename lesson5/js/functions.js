@@ -16,8 +16,8 @@ function showFunc(i) {
 }
 
 function toSixteen(a) {//a= 25
-    var i = 0, b = [], c, str = '';
-    while ((Math.floor(a / 16) != 0) && (i<100)){
+    var i = 0, b = [], str = '';
+    while ((a > 0) && (i<100)){
        b[i] = a % 16;//Остаток от / 16, b[0] = 9
        switch (b[i]){
            case 10: b[i] = 'A'; break;
@@ -26,11 +26,10 @@ function toSixteen(a) {//a= 25
            case 13: b[i] = 'D'; break;
            case 14: b[i] = 'E'; break;
            case 15: b[i] = 'F'; break;
-           default: b = b.toString(); //b[0] = 9
        }
-       c = ~~(a / 16); //c = 1
-       a = a - 16 * c;//вычитаем
-        str = b[i]+ " " + str;
+      // a = (a / 16).toFixed(0); не работает
+        a = Math.floor(a / 16);
+        str = b[i].toString() + str;
        i++;
     }
     if (i==100){
