@@ -15,10 +15,10 @@ function showFunc(i) {
     document.getElementById(i).style.display = "block";
 }
 
-function toSixteen(a) {
+function toSixteen(a) {//a= 25
     var i = 0, b = [], c, str = '';
     while ((a > 0) && (i<100)){
-       b[i] = a % 16;//Остаток от / 16
+       b[i] = a % 16;//Остаток от / 16, b[0] = 1
        switch (b[i]){
            case 10: b[i] = 'A'; break;
            case 11: b[i] = 'B'; break;
@@ -26,20 +26,15 @@ function toSixteen(a) {
            case 13: b[i] = 'D'; break;
            case 14: b[i] = 'E'; break;
            case 15: b[i] = 'F'; break;
-           default: b = b.toString();
+           default: b = b.toString(); //b[0] = 1
        }
-        c = c = a / 16;
-       c = c.toFixed(0);//убираем остаток
+       c = ~~(a / 16); //c = 1
        a = a - 16 * c;//вычитаем
+        str = b[i]+ " " + str;
        i++;
     }
     if (i==99){
         str = 'зациклилось!!'
-    } else {
-        while (i >= 0){
-            str += b[i] + ' ';//записываем в обратном порядке, чтобы получить необходимый результат
-            i--;
-        }
     }
     return str + '<br><br><br>';
 }
