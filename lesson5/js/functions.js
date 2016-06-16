@@ -51,3 +51,29 @@ function getColor() {
     }
     document.getElementById("console").innerHTML = str;
 }
+
+function getDiv(a) {
+    if ((a >= 0) && (a<=999)){
+        this.units = a % 10;
+        if (Math.floor(a / 10)>0){
+            this.dozens = Math.floor(a / 10) % 10;
+        } else {
+            this.dozens = 0;
+        }
+        if (Math.floor(a/100)>0){
+            this.hundreds = Math.floor(a/100) % 10;
+        }else {
+            this.hundreds = 0;
+        }
+    }
+}
+
+function showDiv() {
+    var ex2= new getDiv(document.getElementById("numbfor2").value);
+    if (typeof ex2.units == 'undefined'){
+        document.getElementById("console").innerHTML = 'числа от 0 до 999';
+    }else {
+        document.getElementById("console").innerHTML = 'единицы: ' + ex2.units + ', десятки: ' + ex2.dozens + ', сотни: ' + ex2.hundreds;
+    }
+
+}
