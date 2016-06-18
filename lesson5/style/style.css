@@ -1,5 +1,5 @@
 body {
-  background-color: antiquewhite;
+  background-color: #dee4fa;
   display: flex; }
 
 aside {
@@ -32,6 +32,7 @@ section {
   max-width: 30%; }
 
 #code {
+  color: #a52f20;
   position: fixed;
   min-width: 30%;
   max-width: 30%;

@@ -35,7 +35,7 @@ function toSixteen(a) {//a= 25
     if (i==100){
         str = 'зациклилось!!'
     }
-    return str + '<br><br><br>';
+    return str + '<br>';
 }
 
 function getColor() {
@@ -52,7 +52,7 @@ function getColor() {
     document.getElementById("console").innerHTML = str;
 }
 
-function getDiv(a) {
+function GetDiv(a) {
     if ((a >= 0) && (a<=999)){
         this.units = a % 10;
         if (Math.floor(a / 10)>0){
@@ -69,11 +69,24 @@ function getDiv(a) {
 }
 
 function showDiv() {
-    var ex2= new getDiv(document.getElementById("numbfor2").value);
+    var ex2= new GetDiv(document.getElementById("numbfor2").value);
     if (typeof ex2.units == 'undefined'){
         document.getElementById("console").innerHTML = 'числа от 0 до 999';
     }else {
         document.getElementById("console").innerHTML = 'единицы: ' + ex2.units + ', десятки: ' + ex2.dozens + ', сотни: ' + ex2.hundreds;
     }
 
+}
+
+function objectToQueryString(obj) {
+    var str = '';
+    for(var key in obj)
+        if (obj.hasOwnProperty(key)) {
+            str += obj[key].replace(/:/g,"=");
+        }
+    return str.replace(/'/g,"").replace(/ /g,'').replace(/,/g,'&');
+}
+
+function show3rd() {
+    document.getElementById("console").innerHTML = objectToQueryString(document.getElementById("Query").value);
 }

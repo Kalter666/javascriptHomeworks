@@ -34,11 +34,10 @@
         Реализовать функцию objectToQueryString(object), которая принимает аргументом объект, возвращает строку.
     </p>
     <div>
-        <input type="text" id="parameter1" value="name"> :
-        <input type="text" id="parameter2" value="Стас">
+        <input type="text" id="Query" value="user: 'Dmitry', password: 'pass', id=1">
     </div>
     <br>
-    <input type="button" onclick="showFunc(3);" value="Show 3rd">
+    <input type="button" onclick="showFunc(3); show3rd();" value="Show 3rd">
 </section>
 <aside>
     <span>Результат:</span>
@@ -50,13 +49,69 @@
     <hr>
     <code id="code_inner">
         <code id="1" hidden>
-            //TODO
+            function toSixteen(a) {//a= 25 <br>
+            var i = 0, b = [], str = '';<br>
+            while ((a > 0) && (i<100)){<br>
+            b[i] = a % 16;//Остаток от / 16, b[0] = 9<br>
+            switch (b[i]){<br>
+            case 10: b[i] = 'A'; break;<br>
+            case 11: b[i] = 'B'; break;<br>
+            case 12: b[i] = 'C'; break;<br>
+            case 13: b[i] = 'D'; break;<br>
+            case 14: b[i] = 'E'; break;<br>
+            case 15: b[i] = 'F'; break;<br>
+            }<br>
+            // a = (a / 16).toFixed(0); не работает<br>
+            a = Math.floor(a / 16);<br>
+            str = b[i].toString() + str;<br>
+            i++;<br>
+            }<br>
+            if (i==100){<br>
+            str = 'зациклилось!!'<br>
+            }<br>
+            return str + '&ltbr>';<br>
+            }<br>
+            <br>
+            function getColor() {<br>
+            var str = '';<br>
+            var param = {};<br>
+            for(var k = 1; k<4; k++){<br>
+            param[k] = document.getElementById('color'+ k).value;<br>
+            if ((param[k] >= 0) && (param[k] <= 255)){<br>
+            str += toSixteen(param[k]) + ' ';<br>
+            } else {<br>
+            str += NaN + ' ';<br>
+            }<br>
+            }<br>
+            document.getElementById("console").innerHTML = str;<br>
+            }
         </code>
         <code id="2" hidden>
-            //TODO
+            function GetDiv(a) {<br>
+            if ((a >= 0) && (a<=999)){<br>
+            this.units = a % 10;<br>
+            if (Math.floor(a / 10)>0){<br>
+            this.dozens = Math.floor(a / 10) % 10;<br>
+            } else {<br>
+            this.dozens = 0;<br>
+            }<br>
+            if (Math.floor(a/100)>0){<br>
+            this.hundreds = Math.floor(a/100) % 10;<br>
+            }else {<br>
+            this.hundreds = 0;<br>
+            }<br>
+            }<br>
+            }
         </code>
         <code id="3" hidden>
-            //TODO
+            function objectToQueryString(obj) {<br>
+            var str = '';<br>
+            for(var key in obj)<br>
+            if (obj.hasOwnProperty(key)) {<br>
+            str += obj[key].replace(/:/g,"=");<br>
+            }<br>
+            return str.replace(/'/g,"").replace(/ /g,'').replace(/,/g,'&');<br>
+            }
         </code>
     </code>
 </section>
