@@ -5,11 +5,10 @@
  */
 
 function arrayToList(arr) {
-    var list = {
-        makeLink: function(arg1,arg2){
-            this.arg = arg1;
-            this.next = arg2;
-        }
+    if (arr.length > 1){
+        return {value: arr[arr.length - 1], rest: arrayToList(arr.deleteCell(arr.length - 1))};
+    } else {
+        return {value: arr[arr.length - 1], rest: null};
     }
 }
 
@@ -25,7 +24,7 @@ function reverseArrayInPlace(arr) {
     var a;
     for(var i = 0; i < Math.floor(arr.length / 2); i++){
         a = arr[i];
-        arr[i] = arr[arr.length - i];
+        arr[i] = arr[arr.length - i - 1];
         arr[arr.length - i] = a;
     }
     return arr;
